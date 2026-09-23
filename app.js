@@ -9,6 +9,16 @@ NOVA_CONFIG.anonKey
 const loginForm = $("#loginForm");
 const registerForm = $("#registerForm");
 const successPanel = $("#successPanel");
+
+const otpPanel = $("#otpPanel");
+const otpForm = $("#otpForm");
+const otpCode = $("#otpCode");
+const otpEmail = $("#otpEmail");
+const otpError = $("#otpError");
+const resendOtp = $("#resendOtp");
+const backToRegister = $("#backToRegister");
+
+let pendingRegistrationEmail = "";
 const countryField = $("#countryField"); const countryTrigger = $("#countryTrigger"); const countryMenu = $("#countryMenu"); const countrySearch = $("#countrySearch"); const countryInput = $("#country"); const countryValue = countryField?.querySelector(".country-value"); const countryOptions = [...document.querySelectorAll(".country-option")]; function openCountryMenu() { if (!countryField) return; countryField.classList.add("open"); countryTrigger.setAttribute("aria-expanded", "true"); setTimeout(() => { countrySearch?.focus(); }, 80); } function closeCountryMenu() { if (!countryField) return; countryField.classList.remove("open"); countryTrigger.setAttribute("aria-expanded", "false"); } function selectCountry(button) { const value = button.dataset.value; countryInput.value = value; countryValue.textContent = button.textContent; countryField.classList.add("has-value"); countryOptions.forEach(option => { option.classList.toggle("selected", option === button); }); countrySearch.value = ""; countryOptions.forEach(option => { option.style.display = ""; }); closeCountryMenu(); } countryTrigger?.addEventListener("click", () => { if (countryField.classList.contains("open")) { closeCountryMenu(); } else { openCountryMenu(); } }); countryOptions.forEach(option => { option.addEventListener("click", () => { selectCountry(option); }); }); countrySearch?.addEventListener("input", () => { const query = countrySearch.value.trim().toLowerCase(); let visible = 0; countryOptions.forEach(option => { const matches = option.textContent.toLowerCase().includes(query); option.style.display = matches ? "" : "none"; if (matches) visible++; }); let empty = countryMenu.querySelector(".country-empty"); if (!visible) { if (!empty) { empty = document.createElement("div"); empty.className = "country-empty"; empty.textContent = "No country found."; countryMenu.querySelector(".country-options").appendChild(empty); } } else { empty?.remove(); } }); document.addEventListener("click", event => { if ( countryField && !countryField.contains(event.target) ) { closeCountryMenu(); } }); document.addEventListener("keydown", event => { if (event.key === "Escape") { closeCountryMenu(); } });
 function configured() {
 return (
@@ -166,6 +176,125 @@ setBad(
 );
 });
 
+function showOtpPanel(email) {
+  pendingRegistrationEmail = email;
+
+  otpEmail.textContent = email;
+
+  registerForm.classList.remove("active");
+  loginForm.classList.remove("active");
+  successPanel.classList.remove("show");
+
+  otpPanel.classList.add("active");
+
+  otpCode.value = "";
+  otpError.textContent = "";
+
+  setTimeout(() => {
+    otpCode.focus();
+  }, 100);
+}
+
+
+function hideOtpPanel() {
+  otpPanel.classList.remove("active");
+}
+
+
+otpForm.addEventListener("submit", async e => {
+  e.preventDefault();
+
+  otpError.textContent = "";
+
+  const code = otpCode.value.trim();
+
+  if (!/^\d{6}$/.test(code)) {
+    otpError.textContent =
+      "Enter the 6-digit verification code.";
+
+    shake(otpForm);
+    return;
+  }
+
+  const {
+    data,
+    error
+  } = await client.auth.verifyOtp({
+    email: pendingRegistrationEmail,
+    token: code,
+    type: "signup"
+  });
+
+  if (error) {
+    console.error("OTP verification error:", error);
+
+    otpError.textContent =
+      "Invalid or expired verification code.";
+
+    shake(otpForm);
+    return;
+  }
+
+  if (!data.session) {
+    otpError.textContent =
+      "Email verified. Please sign in.";
+
+    setTimeout(() => {
+      hideOtpPanel();
+      showPage("login");
+    }, 1000);
+
+    return;
+  }
+
+  await client.auth.signOut();
+
+  hideOtpPanel();
+
+  successPanel.classList.add("show");
+
+  setTimeout(() => {
+    showPage("login");
+  }, 1700);
+});
+
+
+resendOtp.addEventListener("click", async () => {
+  if (!pendingRegistrationEmail) return;
+
+  otpError.textContent = "";
+
+  resendOtp.disabled = true;
+  resendOtp.textContent = "Sending...";
+
+  const { error } = await client.auth.resend({
+    type: "signup",
+    email: pendingRegistrationEmail
+  });
+
+  if (error) {
+    console.error("Resend OTP error:", error);
+
+    otpError.textContent =
+      "Could not resend the code. Please try again later.";
+  } else {
+    otpError.textContent =
+      "A new verification code was sent.";
+
+    otpError.style.color = "#159570";
+  }
+
+  setTimeout(() => {
+    resendOtp.disabled = false;
+    resendOtp.textContent = "Resend code";
+  }, 3000);
+});
+
+
+backToRegister.addEventListener("click", () => {
+  hideOtpPanel();
+  showPage("register");
+});
 
 registerForm.addEventListener("submit", async e => {
 e.preventDefault();
@@ -300,20 +429,14 @@ if (error) {
   return;
 }
 
-
 if (!signup.session) {
-  $("#registerError").textContent =
-    "Account created. Check your email to confirm the account, then sign in.";
-
   registerForm.reset();
-
   updateRules();
 
-  showPage("login");
+  showOtpPanel(email);
 
   return;
 }
-
 
 await client.auth.signOut();
 
