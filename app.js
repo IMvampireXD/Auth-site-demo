@@ -222,7 +222,7 @@ otpForm.addEventListener("submit", async e => {
   } = await client.auth.verifyOtp({
     email: pendingRegistrationEmail,
     token: code,
-    type: "signup"
+    type: "email"
   });
 
   if (error) {
