@@ -269,8 +269,7 @@ const {
   options: {
     data: {
       name,
-      country,
-      phone
+      country
     }
   }
 });
