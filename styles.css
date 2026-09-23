@@ -1091,10 +1091,71 @@ button {
     justify-self: center;
   }
 }
+/* =========================
+   OTP PANEL
+========================= */
+
 .otp-panel {
   display: none;
 }
 
 .otp-panel.active {
   display: block;
+}
+
+.otp-panel .otp-icon {
+  font-size: 20px;
+  margin-bottom: 22px;
+}
+
+.otp-panel h2 {
+  margin: 0 0 10px;
+  font-size: 26px;
+  line-height: 1.2;
+}
+
+.otp-panel > p {
+  margin: 0 0 24px;
+  color: #687386;
+  line-height: 1.6;
+}
+
+.otp-panel > p strong {
+  color: #151b2b;
+}
+
+.otp-panel .otp-error {
+  min-height: 20px;
+  margin: 8px 0 12px;
+  color: #e5484d;
+  font-size: 14px;
+}
+
+.otp-panel .primary-btn {
+  width: 100%;
+}
+
+.otp-panel .secondary-btn {
+  width: 100%;
+  margin-top: 12px;
+  border: 0;
+  background: transparent;
+  color: #5b5cf0;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.otp-panel .text-btn {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  border: 0;
+  background: transparent;
+  color: #687386;
+  cursor: pointer;
+}
+
+.otp-panel .secondary-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
