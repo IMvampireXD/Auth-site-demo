@@ -456,47 +456,58 @@
       </p>
 
     </form>
+
 <div class="otp-panel" id="otpPanel">
-  <div class="otp-icon">✉</div>
+  <div class="otp-card">
+    <div class="otp-icon-wrap">
+      <div class="otp-icon">✉</div>
+    </div>
 
-  <h2>Verify your email</h2>
+    <div class="otp-heading">
+      <span class="otp-eyebrow">EMAIL VERIFICATION</span>
+      <h2>Verify your email</h2>
+      <p>
+        We've sent a verification code to
+        <strong id="otpEmail"></strong>
+      </p>
+    </div>
 
-  <p>
-    We sent a 6-digit verification code to
-    <strong id="otpEmail"></strong>.
-  </p>
+    <form id="otpForm">
+      <label class="otp-field">
+        <input
+          type="text"
+          id="otpCode"
+          name="otpCode"
+          inputmode="numeric"
+          autocomplete="one-time-code"
+          maxlength="6"
+          placeholder="000000"
+          required
+        >
+      </label>
 
-  <form id="otpForm">
-    <label class="field">
-      <input
-        type="text"
-        id="otpCode"
-        name="otpCode"
-        inputmode="numeric"
-        autocomplete="one-time-code"
-        maxlength="6"
-        placeholder=" "
-        required
-      >
-      <span>Verification code</span>
-    </label>
+      <p class="otp-error" id="otpError"></p>
 
-    <p class="otp-error" id="otpError"></p>
+      <button type="submit" class="otp-verify-btn">
+        <span>Verify email</span>
+        <span class="otp-arrow">→</span>
+      </button>
+    </form>
 
-    <button type="submit" class="primary-btn">
-      Verify email
+    <div class="otp-footer">
+      <span>Didn't receive the code?</span>
+      <button type="button" id="resendOtp" class="otp-resend">
+        Resend code
+      </button>
+    </div>
+
+    <button type="button" id="backToRegister" class="otp-back">
+      ← Back to registration
     </button>
-  </form>
-
-  <button type="button" id="resendOtp" class="secondary-btn">
-    Resend code
-  </button>
-
-  <button type="button" id="backToRegister" class="text-btn">
-    Back to registration
-  </button>
+  </div>
 </div>
 
+    
     <div id="successPanel" class="success-panel">
       <div class="success-icon">✓</div>
       <h2>Account created</h2>
