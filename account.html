@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nova — Account</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head>
+<body><div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+<main class="shell"><section class="brand-panel"><div class="brand-mark">N</div><p class="eyebrow">NOVA ACCOUNT</p><h1>You’re signed<br><span>in securely.</span></h1><p class="brand-copy">Your authenticated Supabase session is active.</p></section>
+<section class="card-wrap"><div class="auth-card"><div class="success-panel show" style="padding:20px 10px"><div class="success-icon">✓</div><h2 id="hello">Loading…</h2><p id="details">Checking your account…</p><button class="primary" id="logout" style="margin-top:22px">Sign out</button></div></div></section></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script><script>
+const {createClient}=supabase; const client=createClient(NOVA_CONFIG.url,NOVA_CONFIG.anonKey);
+(async()=>{const {data:{user}}=await client.auth.getUser(); if(!user){location.href='index.html';return}
+const m=user.user_metadata||{}; document.querySelector('#hello').textContent='Hi, '+(m.name||'there')+'!';
+document.querySelector('#details').textContent=[user.email,m.country,m.phone].filter(Boolean).join(' · ');
+})();
+document.querySelector('#logout').onclick=async()=>{await client.auth.signOut();location.href='index.html'};
+</script></body></html>

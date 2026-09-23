@@ -1,0 +1,1 @@
+const NOVA_CONFIG = { url: "https://ikglqkbluomqzgagecgh.supabase.co/rest/v1/", anonKey: "sb_publishable_UtT-n1tivRnLPuSbYmFZCg_FnpMxBZU" };

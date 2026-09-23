@@ -1,0 +1,493 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Customized login and registration">
+  <title>Login — Account</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <main class="shell">
+
+```
+<section class="brand-panel">
+  <div class="brand-mark">N</div>
+
+  <p class="eyebrow">LOGIN PAGE</p>
+
+  <h1>
+    Customized login<br>
+    <span>and registration.</span>
+  </h1>
+
+  <p class="brand-copy">
+    Simple, responsive account access.
+  </p>
+</section>
+
+
+<section class="card-wrap">
+  <div class="auth-card">
+
+    <div class="tabs">
+      <button class="tab active" data-page="login">Sign in</button>
+      <button class="tab" data-page="register">Create account</button>
+    </div>
+
+
+    <!-- LOGIN -->
+
+    <form id="loginForm" class="auth-form active" novalidate>
+
+      <div class="heading">
+        <h2>Welcome back</h2>
+        <p>Sign in to continue to your account.</p>
+      </div>
+
+      <label class="field">
+        <input
+          id="loginIdentifier"
+          name="identifier"
+          autocomplete="username"
+          required
+          placeholder=" "
+        >
+        <span>Name or email</span>
+      </label>
+
+      <label class="field">
+        <input
+          id="loginPassword"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          required
+          placeholder=" "
+        >
+        <span>Password</span>
+
+        <button
+          class="eye"
+          type="button"
+          data-target="loginPassword"
+          aria-label="Show password"
+        >◉</button>
+      </label>
+
+      <p id="loginError" class="error" aria-live="polite"></p>
+
+      <button class="primary" type="submit">
+        Sign in <i>→</i>
+      </button>
+
+      <p class="switch">
+        Don't have an account?
+        <button type="button" data-page="register">Register</button>
+      </p>
+
+    </form>
+
+
+    <!-- REGISTER -->
+
+    <form id="registerForm" class="auth-form" novalidate>
+
+      <div class="heading">
+        <h2>Create your account</h2>
+        <p>It only takes a minute to get started.</p>
+      </div>
+
+
+      <div class="two-col">
+
+        <label class="field">
+          <input
+            id="name"
+            name="name"
+            autocomplete="name"
+            required
+            placeholder=" "
+          >
+          <span>Name</span>
+          <small id="nameHint"></small>
+        </label>
+
+<div class="field custom-country" id="countryField">
+  <input type="hidden" id="country" name="country" required>
+
+  <button
+    type="button"
+    class="country-trigger"
+    id="countryTrigger"
+    aria-haspopup="listbox"
+    aria-expanded="false"
+  >
+    <span class="country-value">Select country</span>
+    <span class="country-arrow">⌄</span>
+  </button>
+
+  <span class="country-label">Country</span>
+
+  <div class="country-menu" id="countryMenu">
+    <div class="country-search-wrap">
+      <input
+        type="text"
+        id="countrySearch"
+        class="country-search"
+        placeholder="Search country..."
+        autocomplete="off"
+      >
+    </div>
+
+    <div class="country-options" id="countryOptions" role="listbox">
+
+      <button type="button" class="country-option" data-value="Afghanistan">Afghanistan</button>
+<button type="button" class="country-option" data-value="Albania">Albania</button>
+<button type="button" class="country-option" data-value="Algeria">Algeria</button>
+<button type="button" class="country-option" data-value="Andorra">Andorra</button>
+<button type="button" class="country-option" data-value="Angola">Angola</button>
+<button type="button" class="country-option" data-value="Antigua and Barbuda">Antigua and Barbuda</button>
+<button type="button" class="country-option" data-value="Argentina">Argentina</button>
+<button type="button" class="country-option" data-value="Armenia">Armenia</button>
+<button type="button" class="country-option" data-value="Australia">Australia</button>
+<button type="button" class="country-option" data-value="Austria">Austria</button>
+<button type="button" class="country-option" data-value="Azerbaijan">Azerbaijan</button>
+
+<button type="button" class="country-option" data-value="Bahamas">Bahamas</button>
+<button type="button" class="country-option" data-value="Bahrain">Bahrain</button>
+<button type="button" class="country-option" data-value="Bangladesh">Bangladesh</button>
+<button type="button" class="country-option" data-value="Barbados">Barbados</button>
+<button type="button" class="country-option" data-value="Belarus">Belarus</button>
+<button type="button" class="country-option" data-value="Belgium">Belgium</button>
+<button type="button" class="country-option" data-value="Belize">Belize</button>
+<button type="button" class="country-option" data-value="Benin">Benin</button>
+<button type="button" class="country-option" data-value="Bhutan">Bhutan</button>
+<button type="button" class="country-option" data-value="Bolivia">Bolivia</button>
+<button type="button" class="country-option" data-value="Bosnia and Herzegovina">Bosnia and Herzegovina</button>
+<button type="button" class="country-option" data-value="Botswana">Botswana</button>
+<button type="button" class="country-option" data-value="Brazil">Brazil</button>
+<button type="button" class="country-option" data-value="Brunei">Brunei</button>
+<button type="button" class="country-option" data-value="Bulgaria">Bulgaria</button>
+<button type="button" class="country-option" data-value="Burkina Faso">Burkina Faso</button>
+<button type="button" class="country-option" data-value="Burundi">Burundi</button>
+
+<button type="button" class="country-option" data-value="Cabo Verde">Cabo Verde</button>
+<button type="button" class="country-option" data-value="Cambodia">Cambodia</button>
+<button type="button" class="country-option" data-value="Cameroon">Cameroon</button>
+<button type="button" class="country-option" data-value="Canada">Canada</button>
+<button type="button" class="country-option" data-value="Central African Republic">Central African Republic</button>
+<button type="button" class="country-option" data-value="Chad">Chad</button>
+<button type="button" class="country-option" data-value="Chile">Chile</button>
+<button type="button" class="country-option" data-value="China">China</button>
+<button type="button" class="country-option" data-value="Colombia">Colombia</button>
+<button type="button" class="country-option" data-value="Comoros">Comoros</button>
+<button type="button" class="country-option" data-value="Congo">Congo</button>
+<button type="button" class="country-option" data-value="Costa Rica">Costa Rica</button>
+<button type="button" class="country-option" data-value="Croatia">Croatia</button>
+<button type="button" class="country-option" data-value="Cuba">Cuba</button>
+<button type="button" class="country-option" data-value="Cyprus">Cyprus</button>
+<button type="button" class="country-option" data-value="Czech Republic">Czech Republic</button>
+
+<button type="button" class="country-option" data-value="Democratic Republic of the Congo">Democratic Republic of the Congo</button>
+<button type="button" class="country-option" data-value="Denmark">Denmark</button>
+<button type="button" class="country-option" data-value="Djibouti">Djibouti</button>
+<button type="button" class="country-option" data-value="Dominica">Dominica</button>
+<button type="button" class="country-option" data-value="Dominican Republic">Dominican Republic</button>
+
+<button type="button" class="country-option" data-value="Ecuador">Ecuador</button>
+<button type="button" class="country-option" data-value="Egypt">Egypt</button>
+<button type="button" class="country-option" data-value="El Salvador">El Salvador</button>
+<button type="button" class="country-option" data-value="Equatorial Guinea">Equatorial Guinea</button>
+<button type="button" class="country-option" data-value="Eritrea">Eritrea</button>
+<button type="button" class="country-option" data-value="Estonia">Estonia</button>
+<button type="button" class="country-option" data-value="Eswatini">Eswatini</button>
+<button type="button" class="country-option" data-value="Ethiopia">Ethiopia</button>
+
+<button type="button" class="country-option" data-value="Fiji">Fiji</button>
+<button type="button" class="country-option" data-value="Finland">Finland</button>
+<button type="button" class="country-option" data-value="France">France</button>
+
+<button type="button" class="country-option" data-value="Gabon">Gabon</button>
+<button type="button" class="country-option" data-value="Gambia">Gambia</button>
+<button type="button" class="country-option" data-value="Georgia">Georgia</button>
+<button type="button" class="country-option" data-value="Germany">Germany</button>
+<button type="button" class="country-option" data-value="Ghana">Ghana</button>
+<button type="button" class="country-option" data-value="Greece">Greece</button>
+<button type="button" class="country-option" data-value="Grenada">Grenada</button>
+<button type="button" class="country-option" data-value="Guatemala">Guatemala</button>
+<button type="button" class="country-option" data-value="Guinea">Guinea</button>
+<button type="button" class="country-option" data-value="Guinea-Bissau">Guinea-Bissau</button>
+<button type="button" class="country-option" data-value="Guyana">Guyana</button>
+
+<button type="button" class="country-option" data-value="Haiti">Haiti</button>
+<button type="button" class="country-option" data-value="Honduras">Honduras</button>
+<button type="button" class="country-option" data-value="Hungary">Hungary</button>
+
+<button type="button" class="country-option" data-value="Iceland">Iceland</button>
+<button type="button" class="country-option" data-value="India">India</button>
+<button type="button" class="country-option" data-value="Indonesia">Indonesia</button>
+<button type="button" class="country-option" data-value="Iran">Iran</button>
+<button type="button" class="country-option" data-value="Iraq">Iraq</button>
+<button type="button" class="country-option" data-value="Ireland">Ireland</button>
+<button type="button" class="country-option" data-value="Israel">Israel</button>
+<button type="button" class="country-option" data-value="Italy">Italy</button>
+<button type="button" class="country-option" data-value="Ivory Coast">Ivory Coast</button>
+
+<button type="button" class="country-option" data-value="Jamaica">Jamaica</button>
+<button type="button" class="country-option" data-value="Japan">Japan</button>
+<button type="button" class="country-option" data-value="Jordan">Jordan</button>
+
+<button type="button" class="country-option" data-value="Kazakhstan">Kazakhstan</button>
+<button type="button" class="country-option" data-value="Kenya">Kenya</button>
+<button type="button" class="country-option" data-value="Kiribati">Kiribati</button>
+<button type="button" class="country-option" data-value="Kuwait">Kuwait</button>
+<button type="button" class="country-option" data-value="Kyrgyzstan">Kyrgyzstan</button>
+
+<button type="button" class="country-option" data-value="Laos">Laos</button>
+<button type="button" class="country-option" data-value="Latvia">Latvia</button>
+<button type="button" class="country-option" data-value="Lebanon">Lebanon</button>
+<button type="button" class="country-option" data-value="Lesotho">Lesotho</button>
+<button type="button" class="country-option" data-value="Liberia">Liberia</button>
+<button type="button" class="country-option" data-value="Libya">Libya</button>
+<button type="button" class="country-option" data-value="Liechtenstein">Liechtenstein</button>
+<button type="button" class="country-option" data-value="Lithuania">Lithuania</button>
+<button type="button" class="country-option" data-value="Luxembourg">Luxembourg</button>
+
+<button type="button" class="country-option" data-value="Madagascar">Madagascar</button>
+<button type="button" class="country-option" data-value="Malawi">Malawi</button>
+<button type="button" class="country-option" data-value="Malaysia">Malaysia</button>
+<button type="button" class="country-option" data-value="Maldives">Maldives</button>
+<button type="button" class="country-option" data-value="Mali">Mali</button>
+<button type="button" class="country-option" data-value="Malta">Malta</button>
+<button type="button" class="country-option" data-value="Marshall Islands">Marshall Islands</button>
+<button type="button" class="country-option" data-value="Mauritania">Mauritania</button>
+<button type="button" class="country-option" data-value="Mauritius">Mauritius</button>
+<button type="button" class="country-option" data-value="Mexico">Mexico</button>
+<button type="button" class="country-option" data-value="Micronesia">Micronesia</button>
+<button type="button" class="country-option" data-value="Moldova">Moldova</button>
+<button type="button" class="country-option" data-value="Monaco">Monaco</button>
+<button type="button" class="country-option" data-value="Mongolia">Mongolia</button>
+<button type="button" class="country-option" data-value="Montenegro">Montenegro</button>
+<button type="button" class="country-option" data-value="Morocco">Morocco</button>
+<button type="button" class="country-option" data-value="Mozambique">Mozambique</button>
+<button type="button" class="country-option" data-value="Myanmar">Myanmar</button>
+
+<button type="button" class="country-option" data-value="Namibia">Namibia</button>
+<button type="button" class="country-option" data-value="Nauru">Nauru</button>
+<button type="button" class="country-option" data-value="Nepal">Nepal</button>
+<button type="button" class="country-option" data-value="Netherlands">Netherlands</button>
+<button type="button" class="country-option" data-value="New Zealand">New Zealand</button>
+<button type="button" class="country-option" data-value="Nicaragua">Nicaragua</button>
+<button type="button" class="country-option" data-value="Niger">Niger</button>
+<button type="button" class="country-option" data-value="Nigeria">Nigeria</button>
+<button type="button" class="country-option" data-value="North Korea">North Korea</button>
+<button type="button" class="country-option" data-value="North Macedonia">North Macedonia</button>
+<button type="button" class="country-option" data-value="Norway">Norway</button>
+
+<button type="button" class="country-option" data-value="Oman">Oman</button>
+
+<button type="button" class="country-option" data-value="Pakistan">Pakistan</button>
+<button type="button" class="country-option" data-value="Palau">Palau</button>
+<button type="button" class="country-option" data-value="Palestine">Palestine</button>
+<button type="button" class="country-option" data-value="Panama">Panama</button>
+<button type="button" class="country-option" data-value="Papua New Guinea">Papua New Guinea</button>
+<button type="button" class="country-option" data-value="Paraguay">Paraguay</button>
+<button type="button" class="country-option" data-value="Peru">Peru</button>
+<button type="button" class="country-option" data-value="Philippines">Philippines</button>
+<button type="button" class="country-option" data-value="Poland">Poland</button>
+<button type="button" class="country-option" data-value="Portugal">Portugal</button>
+
+<button type="button" class="country-option" data-value="Qatar">Qatar</button>
+
+<button type="button" class="country-option" data-value="Romania">Romania</button>
+<button type="button" class="country-option" data-value="Russia">Russia</button>
+<button type="button" class="country-option" data-value="Rwanda">Rwanda</button>
+
+<button type="button" class="country-option" data-value="Saint Kitts and Nevis">Saint Kitts and Nevis</button>
+<button type="button" class="country-option" data-value="Saint Lucia">Saint Lucia</button>
+<button type="button" class="country-option" data-value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</button>
+<button type="button" class="country-option" data-value="Samoa">Samoa</button>
+<button type="button" class="country-option" data-value="San Marino">San Marino</button>
+<button type="button" class="country-option" data-value="Sao Tome and Principe">Sao Tome and Principe</button>
+<button type="button" class="country-option" data-value="Saudi Arabia">Saudi Arabia</button>
+<button type="button" class="country-option" data-value="Senegal">Senegal</button>
+<button type="button" class="country-option" data-value="Serbia">Serbia</button>
+<button type="button" class="country-option" data-value="Seychelles">Seychelles</button>
+<button type="button" class="country-option" data-value="Sierra Leone">Sierra Leone</button>
+<button type="button" class="country-option" data-value="Singapore">Singapore</button>
+<button type="button" class="country-option" data-value="Slovakia">Slovakia</button>
+<button type="button" class="country-option" data-value="Slovenia">Slovenia</button>
+<button type="button" class="country-option" data-value="Solomon Islands">Solomon Islands</button>
+<button type="button" class="country-option" data-value="Somalia">Somalia</button>
+<button type="button" class="country-option" data-value="South Africa">South Africa</button>
+<button type="button" class="country-option" data-value="South Korea">South Korea</button>
+<button type="button" class="country-option" data-value="South Sudan">South Sudan</button>
+<button type="button" class="country-option" data-value="Spain">Spain</button>
+<button type="button" class="country-option" data-value="Sri Lanka">Sri Lanka</button>
+<button type="button" class="country-option" data-value="Sudan">Sudan</button>
+<button type="button" class="country-option" data-value="Suriname">Suriname</button>
+<button type="button" class="country-option" data-value="Sweden">Sweden</button>
+<button type="button" class="country-option" data-value="Switzerland">Switzerland</button>
+<button type="button" class="country-option" data-value="Syria">Syria</button>
+
+<button type="button" class="country-option" data-value="Taiwan">Taiwan</button>
+<button type="button" class="country-option" data-value="Tajikistan">Tajikistan</button>
+<button type="button" class="country-option" data-value="Tanzania">Tanzania</button>
+<button type="button" class="country-option" data-value="Thailand">Thailand</button>
+<button type="button" class="country-option" data-value="Timor-Leste">Timor-Leste</button>
+<button type="button" class="country-option" data-value="Togo">Togo</button>
+<button type="button" class="country-option" data-value="Tonga">Tonga</button>
+<button type="button" class="country-option" data-value="Trinidad and Tobago">Trinidad and Tobago</button>
+<button type="button" class="country-option" data-value="Tunisia">Tunisia</button>
+<button type="button" class="country-option" data-value="Turkey">Turkey</button>
+<button type="button" class="country-option" data-value="Turkmenistan">Turkmenistan</button>
+<button type="button" class="country-option" data-value="Tuvalu">Tuvalu</button>
+
+<button type="button" class="country-option" data-value="Uganda">Uganda</button>
+<button type="button" class="country-option" data-value="Ukraine">Ukraine</button>
+<button type="button" class="country-option" data-value="United Arab Emirates">United Arab Emirates</button>
+<button type="button" class="country-option" data-value="United Kingdom">United Kingdom</button>
+<button type="button" class="country-option" data-value="United States">United States</button>
+<button type="button" class="country-option" data-value="Uruguay">Uruguay</button>
+<button type="button" class="country-option" data-value="Uzbekistan">Uzbekistan</button>
+
+<button type="button" class="country-option" data-value="Vanuatu">Vanuatu</button>
+<button type="button" class="country-option" data-value="Vatican City">Vatican City</button>
+<button type="button" class="country-option" data-value="Venezuela">Venezuela</button>
+<button type="button" class="country-option" data-value="Vietnam">Vietnam</button>
+
+<button type="button" class="country-option" data-value="Yemen">Yemen</button>
+
+<button type="button" class="country-option" data-value="Zambia">Zambia</button>
+<button type="button" class="country-option" data-value="Zimbabwe">Zimbabwe</button>
+    </div>
+  </div>
+</div>
+      </div>
+
+
+      <label class="field">
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          required
+          placeholder=" "
+        >
+        <span>Email</span>
+        <small id="emailHint"></small>
+      </label>
+
+
+      <label class="field">
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          autocomplete="tel"
+          required
+          placeholder=" "
+        >
+        <span>Phone number</span>
+      </label>
+
+
+      <label class="field">
+        <input
+          id="registerPassword"
+          name="password"
+          type="password"
+          autocomplete="new-password"
+          required
+          placeholder=" "
+        >
+
+        <span>Password</span>
+
+        <button
+          class="eye"
+          type="button"
+          data-target="registerPassword"
+          aria-label="Show password"
+        >◉</button>
+      </label>
+
+
+      <ul id="passwordRules" class="rules">
+        <li data-rule="length">At least 8 characters</li>
+        <li data-rule="number">1 number</li>
+        <li data-rule="space">No spaces</li>
+      </ul>
+
+
+      <label class="field">
+        <input
+          id="confirmPassword"
+          name="confirmPassword"
+          type="password"
+          autocomplete="new-password"
+          required
+          placeholder=" "
+        >
+
+        <span>Confirm password</span>
+
+        <button
+          class="eye"
+          type="button"
+          data-target="confirmPassword"
+          aria-label="Show password"
+        >◉</button>
+
+        <small id="matchHint"></small>
+      </label>
+
+
+      <p id="registerError" class="error" aria-live="polite"></p>
+
+
+      <button class="primary" type="submit">
+        Create account <i>→</i>
+      </button>
+
+
+      <p class="switch">
+        Already have an account?
+        <button type="button" data-page="login">Sign in</button>
+      </p>
+
+    </form>
+
+
+    <div id="successPanel" class="success-panel">
+      <div class="success-icon">✓</div>
+      <h2>Account created</h2>
+      <p>Your account is ready. Taking you to sign in…</p>
+    </div>
+
+  </div>
+</section>
+```
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="config.js"></script>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
