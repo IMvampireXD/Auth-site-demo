@@ -1091,3 +1091,10 @@ button {
     justify-self: center;
   }
 }
+.otp-panel {
+  display: none;
+}
+
+.otp-panel.active {
+  display: block;
+}
