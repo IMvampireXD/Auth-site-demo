@@ -23,7 +23,7 @@ successPanel.classList.remove("show");
 loginForm.classList.toggle("active", page === "login");
 registerForm.classList.toggle("active", page === "register");
 
-$$$(".tab").forEach(button => {
+$$(".tab").forEach(button => {
   button.classList.toggle(
     "active",
     button.dataset.page === page
