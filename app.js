@@ -187,10 +187,9 @@ const data = Object.fromEntries(
 const name = data.name.trim();
 const email = data.email.trim().toLowerCase();
 const country = data.country?.trim();
-const phone = data.phone.trim();
 
 
-if (!name || !country || !email || !phone) {
+if (!name || !country || !email) {
   $("#registerError").textContent =
     "Please fill in all fields.";
 
